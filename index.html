@@ -1,0 +1,1554 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-translate="site_title">Agência de Classificação de Riscos Ambientais de Propriedades Rurais do Brasil</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #2e7d32;
+            --secondary-color: #4caf50;
+            --accent-color: #ffc107;
+            --text-color: #333;
+            --light-color: #f4f4f4;
+            --dark-color: #1b5e20;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header */
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo i {
+            margin-right: 10px;
+            color: var(--accent-color);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 20px;
+        }
+        
+        nav ul li a {
+            position: relative;
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--accent-color);
+            transition: width 0.3s ease;
+        }
+        
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        /* Language Selector */
+        .language-selector {
+            position: relative;
+            margin-left: 20px;
+        }
+        
+        .language-btn {
+            background: none;
+            border: 1px solid white;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            font-size: 0.9rem;
+            gap: 5px;
+        }
+        
+        .flag-icon {
+            font-size: 1.2em;
+        }
+        
+        .language-dropdown {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background-color: white;
+            border-radius: 4px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            display: none;
+            z-index: 1000;
+            min-width: 180px;
+            margin-top: 5px;
+        }
+        
+        .language-dropdown.active {
+            display: block !important;
+        }
+        
+        .language-dropdown a {
+            display: flex;
+            align-items: center;
+            padding: 10px 15px;
+            color: var(--text-color);
+            text-decoration: none;
+            transition: background-color 0.3s;
+            white-space: nowrap;
+        }
+        
+        .language-dropdown a:hover {
+            background-color: var(--light-color);
+        }
+        
+        .language-dropdown a.active {
+            background-color: var(--light-color);
+            font-weight: bold;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 80vh;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: white;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .btn {
+            position: relative;
+            overflow: hidden;
+            background-color: var(--accent-color);
+            color: var(--dark-color);
+            padding: 12px 30px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+        
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(120deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: all 0.6s ease;
+        }
+        
+        .btn:hover::before {
+            left: 100%;
+        }
+        
+        /* About Section */
+        .about {
+            padding: 5rem 0;
+            background-color: var(--light-color);
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--primary-color);
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .section-title p {
+            font-size: 1.1rem;
+            color: #666;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+        }
+        
+        .about-text {
+            flex: 1;
+        }
+        
+        .about-text h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+        
+        .about-text p {
+            margin-bottom: 1.5rem;
+        }
+        
+        .about-image {
+            flex: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        /* Services Section */
+        .services {
+            padding: 5rem 0;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .service-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .service-icon {
+            background-color: var(--primary-color);
+            color: white;
+            font-size: 2.5rem;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .service-content {
+            padding: 20px;
+        }
+        
+        .service-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+        
+        /* Process Section */
+        .process {
+            padding: 5rem 0;
+            background-color: var(--light-color);
+        }
+        
+        .process-steps {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 3rem;
+            position: relative;
+        }
+        
+        .process-steps::before {
+            content: '';
+            position: absolute;
+            top: 50px;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background-color: var(--primary-color);
+            z-index: 1;
+        }
+        
+        .step {
+            text-align: center;
+            position: relative;
+            z-index: 2;
+            background-color: var(--light-color);
+            padding: 0 20px;
+        }
+        
+        .step-number {
+            width: 60px;
+            height: 60px;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin: 0 auto 20px;
+        }
+        
+        .step h3 {
+            margin-bottom: 10px;
+            color: var(--primary-color);
+        }
+        
+        /* Team Section */
+        .team {
+            padding: 5rem 0;
+        }
+        
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .team-member {
+            text-align: center;
+        }
+        
+        .team-member img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            margin-bottom: 20px;
+            object-fit: cover;
+        }
+        
+        .team-member h3 {
+            margin-bottom: 5px;
+            color: var(--primary-color);
+        }
+        
+        .team-member p {
+            color: #666;
+            margin-bottom: 15px;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+        
+        .social-links a {
+            color: var(--primary-color);
+            font-size: 1.2rem;
+            transition: color 0.3s;
+        }
+        
+        .social-links a:hover {
+            color: var(--accent-color);
+        }
+        
+        /* Testimonials Section */
+        .testimonials {
+            padding: 5rem 0;
+            background-color: var(--light-color);
+        }
+        
+        .testimonial-slider {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+        }
+        
+        .testimonial {
+            text-align: center;
+            padding: 20px;
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+        
+        .testimonial-author {
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+        
+        /* Contact Section */
+        .contact {
+            padding: 5rem 0;
+        }
+        
+        .contact-content {
+            display: flex;
+            gap: 40px;
+        }
+        
+        .contact-info {
+            flex: 1;
+        }
+        
+        .contact-info-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 20px;
+        }
+        
+        .contact-info-icon {
+            color: var(--primary-color);
+            font-size: 1.5rem;
+            margin-right: 15px;
+            margin-top: 5px;
+        }
+        
+        .contact-form {
+            flex: 2;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+        
+        textarea.form-control {
+            height: 150px;
+            resize: vertical;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 3rem 0 1rem;
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-column {
+            flex: 1;
+            min-width: 250px;
+            margin-bottom: 20px;
+        }
+        
+        .footer-column h3 {
+            margin-bottom: 20px;
+            color: var(--accent-color);
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-column ul li a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-column ul li a:hover {
+            color: var(--accent-color);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .about-content {
+                flex-direction: column;
+            }
+            
+            .contact-content {
+                flex-direction: column;
+            }
+            
+            .process-steps {
+                flex-direction: column;
+                gap: 30px;
+            }
+            
+            .process-steps::before {
+                display: none;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            nav ul {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background-color: var(--primary-color);
+                flex-direction: column;
+                padding: 20px;
+            }
+            
+            nav ul.active {
+                display: flex;
+            }
+            
+            nav ul li {
+                margin: 10px 0;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+        }
+        
+        /* Efeitos de Animação */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Smooth Scroll para toda a página */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <i class="fas fa-leaf"></i>
+                <span>Leaf Corporation</span>
+            </div>
+            <nav>
+                <button class="mobile-menu-btn">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <ul>
+                    <li><a href="#inicio" data-translate="inicio">Início</a></li>
+                    <li><a href="#sobre" data-translate="sobre">Sobre</a></li>
+                    <li><a href="#servicos" data-translate="servicos">Serviços</a></li>
+                    <li><a href="#processo" data-translate="processo">Processo</a></li>
+                    <li><a href="#equipe" data-translate="equipe">Equipe</a></li>
+                    <li><a href="#contato" data-translate="contato">Contato</a></li>
+                    <li class="language-selector">
+                        <button class="language-btn">
+                            <span class="flag-icon">🇧🇷</span>
+                            <span>PT-BR</span>
+                        </button>
+                        <div class="language-dropdown">
+                            <a href="pt-BR" class="active"><span class="flag-icon">🇧🇷</span> Português (BR)</a>
+                            <a href="en"><span class="flag-icon">🇺🇸</span> English</a>
+                            <a href="es"><span class="flag-icon">🇪🇸</span> Español</a>
+                            <a href="fr"><span class="flag-icon">🇫🇷</span> Français</a>
+                            <a href="it"><span class="flag-icon">🇮🇹</span> Italiano</a>
+                            <a href="de"><span class="flag-icon">🇩🇪</span> Deutsch</a>
+                            <a href="zh"><span class="flag-icon">🇨🇳</span> 中文</a>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="inicio" class="hero">
+        <div class="container hero-content">
+            <h1 data-translate="site_title">Agência de Classificação de Riscos Ambientais de Propriedades Rurais do Brasil</h1>
+            <p data-translate="hero_subtitle">Especialistas em classificação de riscos ambientais de propriedades rurais em todo o Brasil.</p>
+            <a href="#contato" class="btn" data-translate="solicite_avaliacao">Solicite uma Avaliação</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="sobre" class="about">
+        <div class="container">
+            <div class="section-title">
+                <h2 data-translate="sobre_nos">Sobre Nós</h2>
+                <p data-translate="sobre_subtitle">Conheça a Leaf Corporation a nossa missão é a sustentabilidade do Brasil.</p>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3 data-translate="nossa_historia">Nossa História</h3>
+                    <p data-translate="historia_texto1">A Leaf Corporation nasceu da necessidade de uma avaliação especializada de riscos ambientais para propriedades rurais no Brasil. Com uma equipe de profissionais altamente qualificados, oferecemos soluções completas para a classificação e gestão de riscos ambientais.</p>
+                    <p data-translate="historia_texto2">Nossa experiência abrange diversos biomas brasileiros, desde a Amazônia até o Cerrado, passando pela Mata Atlântica e o Pantanal. Entendemos as particularidades de cada região e desenvolvemos metodologias específicas para cada contexto.</p>
+                    <p data-translate="historia_texto3">Nosso compromisso é garantir que as propriedades rurais estejam em conformidade com a legislação ambiental, protegendo tanto o meio ambiente quanto os interesses dos proprietários.</p>
+                </div>
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Equipe Leaf Corporation em campo">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="servicos" class="services">
+        <div class="container">
+            <div class="section-title">
+                <h2 data-translate="nossos_servicos">Nossos Serviços</h2>
+                <p data-translate="servicos_subtitle">Oferecemos uma gama completa de serviços para classificação e gestão de riscos ambientais em propriedades rurais.</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3 data-translate="avaliacao_riscos">Avaliação de Riscos Ambientais</h3>
+                        <p data-translate="avaliacao_riscos_desc">Realizamos uma análise completa dos riscos ambientais presentes na propriedade, identificando áreas sensíveis e potenciais impactos.</p>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-clipboard-check"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3 data-translate="classificacao_propriedades">Classificação de Propriedades</h3>
+                        <p data-translate="classificacao_propriedades_desc">Classificamos sua propriedade de acordo com os critérios estabelecidos pela legislação ambiental, determinando o nível de risco e as medidas necessárias.</p>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-file-alt"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3 data-translate="relatorios_tecnicos">Elaboração de Relatórios Técnicos</h3>
+                        <p data-translate="relatorios_tecnicos_desc">Desenvolvemos relatórios técnicos detalhados com todas as informações necessárias para a regularização ambiental da sua propriedade.</p>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-tasks"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3 data-translate="planejamento_ambiental">Planejamento de Gestão Ambiental</h3>
+                        <p data-translate="planejamento_ambiental_desc">Criamos planos de gestão ambiental personalizados para sua propriedade, com ações específicas para mitigar os riscos identificados.</p>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3 data-translate="capacitacao_equipes">Capacitação de Equipes</h3>
+                        <p data-translate="capacitacao_equipes_desc">Oferecemos treinamentos para equipes de gestão ambiental, garantindo que sua propriedade mantenha os padrões de qualidade.</p>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3 data-translate="consultoria_especializada">Consultoria Especializada</h3>
+                        <p data-translate="consultoria_especializada_desc">Prestamos consultoria especializada para questões ambientais, auxiliando na tomada de decisões estratégicas para sua propriedade.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section id="processo" class="process">
+        <div class="container">
+            <div class="section-title">
+                <h2 data-translate="nosso_processo">Nosso Processo</h2>
+                <p data-translate="processo_subtitle">Conheça as etapas do nosso trabalho de classificação de riscos ambientais para propriedades rurais.</p>
+            </div>
+            <div class="process-steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3 data-translate="diagnostico_inicial">Diagnóstico Inicial</h3>
+                    <p data-translate="diagnostico_inicial_desc">Realizamos uma visita técnica à propriedade para entender sua estrutura, atividades e características ambientais.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3 data-translate="analise_dados">Análise de Dados</h3>
+                    <p data-translate="analise_dados_desc">Coletamos e analisamos dados sobre a propriedade, incluindo documentação, histórico e características ambientais.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3 data-translate="avaliacao_riscos_processo">Avaliação de Riscos</h3>
+                    <p data-translate="avaliacao_riscos_processo_desc">Identificamos e avaliamos os riscos ambientais presentes na propriedade, classificando-os por gravidade e urgência.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <h3 data-translate="classificacao_processo">Classificação</h3>
+                    <p data-translate="classificacao_processo_desc">Classificamos a propriedade de acordo com os critérios estabelecidos pela legislação ambiental vigente.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">5</div>
+                    <h3 data-translate="relatorio_recomendacoes">Relatório e Recomendações</h3>
+                    <p data-translate="relatorio_recomendacoes_desc">Elaboramos um relatório técnico detalhado com a classificação e recomendações para gestão dos riscos.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section id="equipe" class="team">
+        <div class="container">
+            <div class="section-title">
+                <h2 data-translate="nossa_equipe">Responsável Técnico</h2>
+                <p data-translate="equipe_subtitle">Conheça nosso diretor técnico</p>
+            </div>
+            <div class="team-grid">
+                <div class="team-member">
+                    <img src="./assets/images/diretortecnico.jpeg" alt="Dr. Josamar Gomes" style="width: 200px; height: 200px; object-fit: cover; border-radius: 50%;">
+                    <h3>Dr. Josamar Gomes</h3>
+                    <p data-translate="doutor_engenharia_florestal">Doutor em Engenharia Florestal</p>
+                    <div class="social-links">
+                        <a href="https://www.linkedin.com/in/josamar-gomes-802235ba" target="_blank"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials">
+        <div class="container">
+            <div class="section-title">
+                <h2 data-translate="depoimentos">O Que Nossos Clientes Dizem</h2>
+                <p data-translate="depoimentos_subtitle">Depoimentos de proprietários rurais que confiaram em nossos serviços.</p>
+            </div>
+            <div class="testimonial-slider">
+                <div class="testimonial">
+                    <p class="testimonial-text" data-translate="depoimento_texto">"A Leaf Corporation realizou uma avaliação completa da nossa fazenda e nos ajudou a identificar riscos que nem sabíamos que existiam. Graças ao trabalho deles, conseguimos regularizar nossa propriedade sem problemas."</p>
+                    <p class="testimonial-author" data-translate="depoimento_autor">João Paulo Mendes, Proprietário Rural - Mato Grosso</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contato" class="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2 data-translate="entre_contato">Entre em Contato</h2>
+                <p data-translate="contato_subtitle">Estamos prontos para ajudar com a classificação de riscos ambientais em propriedades rurais no Brasil</p>
+            </div>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-info-item">
+                        <div class="contact-info-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div>
+                            <h3 data-translate="telefone">Telefone</h3>
+                            <p>+55 (41) 99274-2173</p>
+                        </div>
+                    </div>
+                    <div class="contact-info-item">
+                        <div class="contact-info-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div>
+                            <h3 data-translate="email">Email</h3>
+                            <p>contato@leaf-engenharia.com</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <form>
+                        <div class="form-group">
+                            <label for="name" data-translate="nome">Nome</label>
+                            <input type="text" id="name" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Telefone</label>
+                            <input type="tel" id="phone" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="property" data-translate="propriedade">Propriedade</label>
+                            <input type="text" id="property" class="form-control" data-translate="propriedade_placeholder" placeholder="Nome e localização da propriedade">
+                        </div>
+                        <div class="form-group">
+                            <label for="message" data-translate="mensagem">Mensagem</label>
+                            <textarea id="message" class="form-control" required></textarea>
+                        </div>
+                        <button type="submit" class="btn" data-translate="enviar_mensagem">Enviar Mensagem</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Leaf Corporation</h3>
+                    <p>Especialistas em classificação de riscos ambientais para propriedades rurais em todo o Brasil.</p>
+                </div>
+                <div class="footer-column">
+                    <h3 data-translate="links_rapidos">Links Rápidos</h3>
+                    <ul>
+                        <li><a href="#inicio" data-translate="inicio">Início</a></li>
+                        <li><a href="#sobre" data-translate="sobre">Sobre</a></li>
+                        <li><a href="#servicos" data-translate="servicos">Serviços</a></li>
+                        <li><a href="#processo" data-translate="processo">Processo</a></li>
+                        <li><a href="#equipe" data-translate="equipe">Equipe</a></li>
+                        <li><a href="#contato" data-translate="contato">Contato</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3 data-translate="servicos_footer">Serviços</h3>
+                    <ul>
+                        <li><a href="#servicos" data-translate="avaliacao_riscos">Avaliação de Riscos</a></li>
+                        <li><a href="#servicos" data-translate="classificacao_propriedades">Classificação de Propriedades</a></li>
+                        <li><a href="#servicos" data-translate="relatorios_tecnicos">Relatórios Técnicos</a></li>
+                        <li><a href="#servicos" data-translate="planejamento_ambiental">Planejamento Ambiental</a></li>
+                        <li><a href="#servicos" data-translate="capacitacao_equipes">Capacitação</a></li>
+                        <li><a href="#servicos" data-translate="consultoria_especializada">Consultoria</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column" style="text-align: center;">
+                    <h3 data-translate="redes_sociais">Redes Sociais</h3>
+                    <div style="display: flex; justify-content: center; align-items: center; margin-top: 15px;">
+                        <a href="https://www.instagram.com/leafengenharia_/" target="_blank" style="display: inline-block; font-size: 24px; color: white;">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p data-translate="copyright">© 2023 Leaf Corporation - Todos os direitos reservados</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const navMenu = document.querySelector('nav ul');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+        
+        // Language Menu Toggle
+        const langBtn = document.querySelector('.language-btn');
+        const langDropdown = document.querySelector('.language-dropdown');
+        
+        langBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            langDropdown.classList.toggle('active');
+        });
+        
+        // Fechar o menu de idiomas quando clicar fora
+        document.addEventListener('click', (e) => {
+            if (!langDropdown.contains(e.target) && !langBtn.contains(e.target)) {
+                langDropdown.classList.remove('active');
+            }
+        });
+        
+        // Smooth Scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+                
+                // Close mobile menu if open
+                if (navMenu.classList.contains('active')) {
+                    navMenu.classList.remove('active');
+                }
+            });
+        });
+        
+        // Objeto com as traduções para cada idioma
+        const translations = {
+            'pt-BR': {
+                'site_title': 'Agência de Classificação de Riscos Ambientais de Propriedades Rurais do Brasil',
+                'inicio': 'Início',
+                'sobre': 'Sobre',
+                'servicos': 'Serviços',
+                'processo': 'Processo',
+                'equipe': 'Equipe',
+                'contato': 'Contato',
+                'hero_subtitle': 'Especialistas em classificação de riscos ambientais de propriedades rurais em todo o Brasil.',
+                'solicite_avaliacao': 'Solicite uma Avaliação',
+                'sobre_nos': 'Sobre Nós',
+                'sobre_subtitle': 'Conheça a Leaf Corporation a nossa missão é a sustentabilidade do Brasil.',
+                'nossa_historia': 'Nossa História',
+                'historia_texto1': 'A Leaf Corporation nasceu da necessidade de uma avaliação especializada de riscos ambientais para propriedades rurais no Brasil. Com uma equipe de profissionais altamente qualificados, oferecemos soluções completas para a classificação e gestão de riscos ambientais.',
+                'historia_texto2': 'Nossa experiência abrange diversos biomas brasileiros, desde a Amazônia até o Cerrado, passando pela Mata Atlântica e o Pantanal. Entendemos as particularidades de cada região e desenvolvemos metodologias específicas para cada contexto.',
+                'historia_texto3': 'Nosso compromisso é garantir que as propriedades rurais estejam em conformidade com a legislação ambiental, protegendo tanto o meio ambiente quanto os interesses dos proprietários.',
+                'nossos_servicos': 'Nossos Serviços',
+                'servicos_subtitle': 'Oferecemos uma gama completa de serviços para classificação e gestão de riscos ambientais em propriedades rurais.',
+                'avaliacao_riscos': 'Avaliação de Riscos Ambientais',
+                'avaliacao_riscos_desc': 'Realizamos uma análise completa dos riscos ambientais presentes na propriedade, identificando áreas sensíveis e potenciais impactos.',
+                'classificacao_propriedades': 'Classificação de Propriedades',
+                'classificacao_propriedades_desc': 'Classificamos sua propriedade de acordo com os critérios estabelecidos pela legislação ambiental, determinando o nível de risco e as medidas necessárias.',
+                'relatorios_tecnicos': 'Elaboração de Relatórios Técnicos',
+                'relatorios_tecnicos_desc': 'Desenvolvemos relatórios técnicos detalhados com todas as informações necessárias para a regularização ambiental da sua propriedade.',
+                'planejamento_ambiental': 'Planejamento de Gestão Ambiental',
+                'planejamento_ambiental_desc': 'Criamos planos de gestão ambiental personalizados para sua propriedade, com ações específicas para mitigar os riscos identificados.',
+                'capacitacao_equipes': 'Capacitação de Equipes',
+                'capacitacao_equipes_desc': 'Oferecemos treinamentos para equipes de gestão ambiental, garantindo que sua propriedade mantenha os padrões de qualidade.',
+                'consultoria_especializada': 'Consultoria Especializada',
+                'consultoria_especializada_desc': 'Prestamos consultoria especializada para questões ambientais, auxiliando na tomada de decisões estratégicas para sua propriedade.',
+                'nosso_processo': 'Nosso Processo',
+                'processo_subtitle': 'Conheça as etapas do nosso trabalho de classificação de riscos ambientais para propriedades rurais.',
+                'diagnostico_inicial': 'Diagnóstico Inicial',
+                'diagnostico_inicial_desc': 'Realizamos uma visita técnica à propriedade para entender sua estrutura, atividades e características ambientais.',
+                'analise_dados': 'Análise de Dados',
+                'analise_dados_desc': 'Coletamos e analisamos dados sobre a propriedade, incluindo documentação, histórico e características ambientais.',
+                'avaliacao_riscos_processo': 'Avaliação de Riscos',
+                'avaliacao_riscos_processo_desc': 'Identificamos e avaliamos os riscos ambientais presentes na propriedade, classificando-os por gravidade e urgência.',
+                'classificacao_processo': 'Classificação',
+                'classificacao_processo_desc': 'Classificamos a propriedade de acordo com os critérios estabelecidos pela legislação ambiental vigente.',
+                'relatorio_recomendacoes': 'Relatório e Recomendações',
+                'relatorio_recomendacoes_desc': 'Elaboramos um relatório técnico detalhado com a classificação e recomendações para gestão dos riscos.',
+                'nossa_equipe': 'Responsável Técnico',
+                'equipe_subtitle': 'Conheça nosso diretor técnico',
+                'doutor_engenharia_florestal': 'Doutor em Engenharia Florestal',
+                'especialista_gestao': 'Especialista em Gestão Ambiental',
+                'especialista_avaliacao': 'Especialista em Avaliação de Riscos',
+                'especialista_legislacao': 'Especialista em Legislação Ambiental',
+                'depoimentos': 'O Que Nossos Clientes Dizem',
+                'depoimentos_subtitle': 'Depoimentos de proprietários rurais que confiaram em nossos serviços.',
+                'depoimento_texto': '"A Leaf Corporation realizou uma avaliação completa da nossa fazenda e nos ajudou a identificar riscos que nem sabíamos que existiam. Graças ao trabalho deles, conseguimos regularizar nossa propriedade sem problemas."',
+                'depoimento_autor': 'João Paulo Mendes, Proprietário Rural - Mato Grosso',
+                'entre_contato': 'Entre em Contato',
+                'contato_subtitle': 'Estamos prontos para ajudar com a classificação de riscos ambientais em propriedades rurais no Brasil',
+                'endereco': 'Endereço',
+                'telefone': 'Telefone',
+                'email': 'Email',
+                'nome': 'Nome',
+                'propriedade': 'Propriedade',
+                'propriedade_placeholder': 'Nome e localização da propriedade',
+                'mensagem': 'Mensagem',
+                'enviar_mensagem': 'Enviar Mensagem',
+                'links_rapidos': 'Links Rápidos',
+                'servicos_footer': 'Serviços',
+                'redes_sociais': 'Redes Sociais',
+                'copyright': '© 2023 Leaf Corporation - Todos os direitos reservados'
+            },
+            'en': {
+                'site_title': 'Environmental Risk Classification Agency for Rural Properties in Brazil',
+                'inicio': 'Home',
+                'sobre': 'About',
+                'servicos': 'Services',
+                'processo': 'Process',
+                'equipe': 'Team',
+                'contato': 'Contact',
+                'hero_subtitle': 'Experts in environmental risk assessment and classification of rural properties across Brazil.',
+                'solicite_avaliacao': 'Request an Assessment',
+                'sobre_nos': 'About Us',
+                'sobre_subtitle': 'Meet Leaf Corporation our mission is Brazil\'s sustainability.',
+                'nossa_historia': 'Our History',
+                'historia_texto1': 'Leaf Corporation was born from the need for specialized environmental risk assessment for rural properties in Brazil. With a highly qualified team, we offer complete solutions for environmental risk classification and management.',
+                'historia_texto2': 'Our experience covers various Brazilian biomes, from the Amazon to the Cerrado, including the Atlantic Forest and Pantanal. We understand the particularities of each region and develop specific methodologies for each context.',
+                'historia_texto3': 'Our commitment is to ensure that rural properties comply with environmental legislation, protecting both the environment and property owners\' interests.',
+                'nossos_servicos': 'Our Services',
+                'servicos_subtitle': 'We offer a complete range of services for environmental risk classification and management in rural properties.',
+                'avaliacao_riscos': 'Environmental Risk Assessment',
+                'avaliacao_riscos_desc': 'We conduct a comprehensive analysis of environmental risks present in the property, identifying sensitive areas and potential impacts.',
+                'classificacao_propriedades': 'Property Classification',
+                'classificacao_propriedades_desc': 'We classify your property according to environmental legislation criteria, determining risk levels and necessary measures.',
+                'relatorios_tecnicos': 'Technical Reports',
+                'relatorios_tecnicos_desc': 'We develop detailed technical reports with all necessary information for your property\'s environmental regularization.',
+                'planejamento_ambiental': 'Environmental Management Planning',
+                'planejamento_ambiental_desc': 'We create customized environmental management plans for your property, with specific actions to mitigate identified risks.',
+                'capacitacao_equipes': 'Team Training',
+                'capacitacao_equipes_desc': 'We offer training for environmental management teams, ensuring your property maintains quality standards.',
+                'consultoria_especializada': 'Specialized Consulting',
+                'consultoria_especializada_desc': 'We provide specialized consulting for environmental issues, assisting in strategic decision-making for your property.',
+                'nosso_processo': 'Our Process',
+                'processo_subtitle': 'Learn about the steps of our environmental risk classification work for rural properties.',
+                'diagnostico_inicial': 'Initial Diagnosis',
+                'diagnostico_inicial_desc': 'We conduct a technical visit to the property to understand its structure, activities, and environmental characteristics.',
+                'analise_dados': 'Data Analysis',
+                'analise_dados_desc': 'We collect and analyze property data, including documentation, history, and environmental characteristics.',
+                'avaliacao_riscos_processo': 'Risk Assessment',
+                'avaliacao_riscos_processo_desc': 'We identify and assess environmental risks present in the property, classifying them by severity and urgency.',
+                'classificacao_processo': 'Classification',
+                'classificacao_processo_desc': 'We classify the property according to current environmental legislation criteria.',
+                'relatorio_recomendacoes': 'Report and Recommendations',
+                'relatorio_recomendacoes_desc': 'We prepare a detailed technical report with classification and recommendations for risk management.',
+                'nossa_equipe': 'Technical Responsible',
+                'equipe_subtitle': 'Meet our technical director',
+                'contato_subtitle': 'We are ready to help with environmental risk classification in rural properties in Brazil',
+                'diretor_tecnico': 'Technical Director',
+                'especialista_gestao': 'Environmental Management Specialist',
+                'especialista_avaliacao': 'Risk Assessment Specialist',
+                'especialista_legislacao': 'Environmental Legislation Specialist',
+                'depoimentos': 'What Our Clients Say',
+                'depoimentos_subtitle': 'Testimonials from rural property owners who trusted our services.',
+                'depoimento_texto': '"Leaf Corporation conducted a complete assessment of our farm and helped us identify risks we didn\'t even know existed. Thanks to their work, we were able to regularize our property without any problems."',
+                'depoimento_autor': 'João Paulo Mendes, Rural Property Owner - Mato Grosso',
+                'entre_contato': 'Contact Us',
+                'contato_subtitle': 'We are ready to help with environmental risk classification in rural properties in Brazil',
+                'endereco': 'Address',
+                'telefone': '+55 (41) 99274-2173',
+                'email': 'Email',
+                'nome': 'Name',
+                'propriedade': 'Property',
+                'propriedade_placeholder': 'Property name and location',
+                'mensagem': 'Message',
+                'enviar_mensagem': 'Send Message',
+                'links_rapidos': 'Quick Links',
+                'servicos_footer': 'Services',
+                'redes_sociais': 'Social Media',
+                'copyright': '© 2023 Leaf Corporation - All rights reserved'
+            },
+            'es': {
+                'site_title': 'Agencia de Clasificación de Riesgos Ambientales de Propiedades Rurales de Brasil',
+                'inicio': 'Inicio',
+                'sobre': 'Sobre Nosotros',
+                'servicos': 'Servicios',
+                'processo': 'Proceso',
+                'equipe': 'Equipo',
+                'contato': 'Contacto',
+                'hero_subtitle': 'Expertos en evaluación y clasificación de riesgos ambientales de propiedades rurales en todo Brasil.',
+                'solicite_avaliacao': 'Solicitar una Evaluación',
+                'sobre_nos': 'Sobre Nosotros',
+                'sobre_subtitle': 'Conozca Leaf Corporation nuestra misión es la sostenibilidad de Brasil.',
+                'nossa_historia': 'Nuestra Historia',
+                'historia_texto1': 'Leaf Corporation nació de la necesidad de una evaluación especializada de riesgos ambientales para propiedades rurales en Brasil. Con un equipo de profesionales altamente calificados, ofrecemos soluciones completas para la clasificación y gestión de riesgos ambientales.',
+                'historia_texto2': 'Nuestra experiencia abarca diversos biomas brasileños, desde la Amazonía hasta el Cerrado, pasando por la Mata Atlántica y el Pantanal. Entendemos las particularidades de cada región y desarrollamos metodologías específicas para cada contexto.',
+                'historia_texto3': 'Nuestro compromiso es garantizar que las propiedades rurales cumplan con la legislación ambiental, protegiendo tanto el medio ambiente como los intereses de los propietarios.',
+                'nossos_servicos': 'Nuestros Servicios',
+                'servicos_subtitle': 'Ofrecemos una gama completa de servicios para la clasificación y gestión de riesgos ambientales en propiedades rurales.',
+                'avaliacao_riscos': 'Evaluación de Riesgos Ambientales',
+                'avaliacao_riscos_desc': 'Realizamos un análisis completo de los riesgos ambientales presentes en la propiedad, identificando áreas sensibles y posibles impactos.',
+                'classificacao_propriedades': 'Clasificación de Propiedades',
+                'classificacao_propriedades_desc': 'Clasificamos su propiedad según los criterios establecidos por la legislación ambiental, determinando el nivel de riesgo y las medidas necesarias.',
+                'relatorios_tecnicos': 'Elaboración de Informes Técnicos',
+                'relatorios_tecnicos_desc': 'Desarrollamos informes técnicos detallados con toda la información necesaria para la regularización ambiental de su propiedad.',
+                'planejamento_ambiental': 'Planificación de Gestión Ambiental',
+                'planejamento_ambiental_desc': 'Creamos planes de gestión ambiental personalizados para su propiedad, con acciones específicas para mitigar los riesgos identificados.',
+                'capacitacao_equipes': 'Capacitación de Equipos',
+                'capacitacao_equipes_desc': 'Ofrecemos capacitación para equipos de gestión ambiental, garantizando que su propiedad mantenga los estándares de calidad.',
+                'consultoria_especializada': 'Consultoría Especializada',
+                'consultoria_especializada_desc': 'Brindamos consultoría especializada para cuestiones ambientales, ayudando en la toma de decisiones estratégicas para su propiedad.',
+                'nosso_processo': 'Nuestro Proceso',
+                'processo_subtitle': 'Conozca las etapas de nuestro trabajo de clasificación de riesgos ambientales para propiedades rurales.',
+                'diagnostico_inicial': 'Diagnóstico Inicial',
+                'diagnostico_inicial_desc': 'Realizamos una visita técnica a la propiedad para entender su estructura, actividades y características ambientales.',
+                'analise_dados': 'Análisis de Datos',
+                'analise_dados_desc': 'Recopilamos y analizamos datos sobre la propiedad, incluyendo documentación, historial y características ambientales.',
+                'avaliacao_riscos_processo': 'Evaluación de Riesgos',
+                'avaliacao_riscos_processo_desc': 'Identificamos y evaluamos los riesgos ambientales presentes en la propiedad, clasificándolos por gravedad y urgencia.',
+                'classificacao_processo': 'Clasificación',
+                'classificacao_processo_desc': 'Clasificamos la propiedad según los criterios establecidos por la legislación ambiental vigente.',
+                'relatorio_recomendacoes': 'Informe y Recomendaciones',
+                'relatorio_recomendacoes_desc': 'Elaboramos un informe técnico detallado con la clasificación y recomendaciones para la gestión de riesgos.',
+                'nossa_equipe': 'Responsable Técnico',
+                'equipe_subtitle': 'Conozca a nuestro director técnico',
+                'doutor_engenharia_florestal': 'Doctor en Ingeniería Forestal',
+                'especialista_gestao': 'Especialista en Gestión Ambiental',
+                'especialista_avaliacao': 'Especialista en Evaluación de Riesgos',
+                'especialista_legislacao': 'Especialista en Legislación Ambiental',
+                'depoimentos': 'Lo Que Dicen Nuestros Clientes',
+                'depoimentos_subtitle': 'Testimonianze di proprietari rurali che si sono fidati dei nostri servizi.',
+                'depoimento_texto': '"Leaf Corporation realizó una evaluación completa de nuestra finca y nos ayudó a identificar riesgos que ni siquiera sabíamos que existían. Gracias a su trabajo, pudimos regularizar nuestra propiedad sin problemas."',
+                'depoimento_autor': 'João Paulo Mendes, Propietario Rural - Mato Grosso',
+                'entre_contato': 'Contáctenos',
+                'contato_subtitle': 'Estamos listos para ayudar con la clasificación de riesgos ambientales en propiedades rurales en Brasil',
+                'endereco': 'Dirección',
+                'telefone': '+55 (41) 99274-2173',
+                'email': 'Correo Electrónico',
+                'nome': 'Nombre',
+                'propriedade': 'Propiedad',
+                'propriedade_placeholder': 'Nombre y ubicación de la propiedad',
+                'mensagem': 'Mensaje',
+                'enviar_mensagem': 'Enviar Mensaje',
+                'links_rapidos': 'Enlaces Rápidos',
+                'servicos_footer': 'Servicios',
+                'redes_sociais': 'Redes Sociales',
+                'copyright': '© 2023 Leaf Corporation - Todos los derechos reservados'
+            },
+            'fr': {
+                'site_title': 'Agence de Classification des Risques Environnementaux des Propriétés Rurales du Brésil',
+                'inicio': 'Accueil',
+                'sobre': 'À Propos',
+                'servicos': 'Services',
+                'processo': 'Processus',
+                'equipe': 'Équipe',
+                'contato': 'Contact',
+                'hero_subtitle': 'Experts en évaluation et classification des risques environnementaux des propriétés rurales à travers le Brésil.',
+                'solicite_avaliacao': 'Demander une Évaluation',
+                'sobre_nos': 'À Propos de Nous',
+                'sobre_subtitle': 'Découvrez Leaf Corporation notre mission est la durabilité du Brésil.',
+                'nossa_historia': 'Notre Histoire',
+                'historia_texto1': 'Leaf Corporation est née de la nécessité d\'une évaluation spécialisée des risques environnementaux pour les propriétés rurales au Brésil. Avec une équipe de professionnels hautement qualifiés, nous offrons des solutions complètes pour la classification et la gestion des risques environnementaux.',
+                'historia_texto2': 'Notre expérience couvre divers biomes brésiliens, de l\'Amazonie au Cerrado, en passant par la Mata Atlântica et le Pantanal. Nous comprenons les particularités de chaque région et développons des méthodologies spécifiques pour chaque contexte.',
+                'historia_texto3': 'Notre engagement est de garantir que les propriétés rurales soient conformes à la législation environnementale, protégeant à la fois l\'environnement et les intérêts des propriétaires.',
+                'nossos_servicos': 'Nos Services',
+                'servicos_subtitle': 'Nous offrons une gamme complète de services pour la classification et la gestion des risques environnementaux dans les propriétés rurales.',
+                'avaliacao_riscos': 'Évaluation des Risques Environnementaux',
+                'avaliacao_riscos_desc': 'Nous réalisons une analyse complète des risques environnementaux présents dans la propriété, identifiant les zones sensibles et les impacts potentiels.',
+                'classificacao_propriedades': 'Classification des Propriétés',
+                'classificacao_propriedades_desc': 'Nous classifions votre propriété selon les critères établis par la législation environnementale, déterminant le niveau de risque et les mesures nécessaires.',
+                'relatorios_tecnicos': 'Élaboration de Rapports Techniques',
+                'relatorios_tecnicos_desc': 'Nous développons des rapports techniques détaillés avec toutes les informations nécessaires pour la régularisation environnementale de votre propriété.',
+                'planejamento_ambiental': 'Planification de la Gestion Environnementale',
+                'planejamento_ambiental_desc': 'Nous créons des plans de gestion environnementale personnalisés pour votre propriété, avec des actions spécifiques pour atténuer les risques identifiés.',
+                'capacitacao_equipes': 'Formation des Équipes',
+                'capacitacao_equipes_desc': 'Nous offrons des formations pour les équipes de gestion environnementale, garantissant que votre propriété maintienne les normes de qualité.',
+                'consultoria_especializada': 'Conseil Spécialisé',
+                'consultoria_especializada_desc': 'Nous fournissons des conseils spécialisés pour les questions environnementales, aidant à la prise de décisions stratégiques pour votre propriété.',
+                'nosso_processo': 'Notre Processus',
+                'processo_subtitle': 'Découvrez les étapes de notre travail de classification des risques environnementaux pour les propriétés rurales.',
+                'diagnostico_inicial': 'Diagnostic Initial',
+                'diagnostico_inicial_desc': 'Nous effectuons une visite technique à la propriété pour comprendre sa structure, ses activités et ses caractéristiques environnementales.',
+                'analise_dados': 'Analyse des Données',
+                'analise_dados_desc': 'Nous collectons et analysons les données sur la propriété, y compris la documentation, l\'historique et les caractéristiques environnementales.',
+                'avaliacao_riscos_processo': 'Évaluation des Risques',
+                'avaliacao_riscos_processo_desc': 'Nous identifions et évaluons les risques environnementaux présents dans la propriété, les classifiant par gravité et urgence.',
+                'classificacao_processo': 'Classification',
+                'classificacao_processo_desc': 'Nous classifions la propriété selon les critères établis par la législation environnementale en vigueur.',
+                'relatorio_recomendacoes': 'Rapport et Recommandations',
+                'relatorio_recomendacoes_desc': 'Nous préparons un rapport technique détaillé avec la classification et les recommandations pour la gestion des risques.',
+                'nossa_equipe': 'Responsable Technique',
+                'equipe_subtitle': 'Rencontrez notre directeur technique',
+                'doutor_engenharia_florestal': 'Docteur en Ingénierie Forestière',
+                'especialista_gestao': 'Spécialiste en Gestion Environnementale',
+                'especialista_avaliacao': 'Spécialiste en Évaluation des Risques',
+                'especialista_legislacao': 'Spécialiste en Législation Environnementale',
+                'depoimentos': 'Ce Que Disent Nos Clients',
+                'depoimentos_subtitle': 'Témoignages de propriétaires ruraux qui ont fait confiance à nos services.',
+                'depoimento_texto': '"Leaf Corporation a effectué une évaluation complète de notre ferme et nous a aidés à identifier des risques dont nous ne soupçonnions même pas l\'existence. Grâce à leur travail, nous avons pu régulariser notre propriété sans problème."',
+                'depoimento_autor': 'João Paulo Mendes, Propriétaire Rural - Mato Grosso',
+                'entre_contato': 'Contactez-nous',
+                'contato_subtitle': 'Nous sommes prêts à vous aider avec la classification des risques environnementaux dans les propriétés rurales au Brésil',
+                'endereco': 'Adresse',
+                'telefone': '+55 (41) 99274-2173',
+                'email': 'Email',
+                'nome': 'Nom',
+                'propriedade': 'Propriété',
+                'propriedade_placeholder': 'Nom et emplacement de la propriété',
+                'mensagem': 'Message',
+                'enviar_mensagem': 'Envoyer le Message',
+                'links_rapidos': 'Liens Rapides',
+                'servicos_footer': 'Services',
+                'redes_sociais': 'Réseaux Sociaux',
+                'copyright': '© 2023 Leaf Corporation - Tous droits réservés'
+            },
+            'it': {
+                'site_title': 'Agenzia di Classificazione dei Rischi Ambientali per Proprietà Rurali del Brasile',
+                'inicio': 'Home',
+                'sobre': 'Chi Siamo',
+                'servicos': 'Servizi',
+                'processo': 'Processo',
+                'equipe': 'Team',
+                'contato': 'Contatti',
+                'hero_subtitle': 'Esperti nella valutazione e classificazione dei rischi ambientali delle proprietà rurali in tutto il Brasile.',
+                'solicite_avaliacao': 'Richiedi una Valutazione',
+                'sobre_nos': 'Chi Siamo',
+                'sobre_subtitle': 'Scopri Leaf Corporation la nostra missione è la sostenibilità del Brasile.',
+                'nossa_historia': 'La Nostra Storia',
+                'historia_texto1': 'Leaf Corporation è nata dalla necessità di una valutazione specializzata dei rischi ambientali per le proprietà rurali in Brasile. Con un team di professionisti altamente qualificati, offriamo soluzioni complete per la classificazione e la gestione dei rischi ambientali.',
+                'historia_texto2': 'La nostra esperienza copre vari biomi brasiliani, dall\'Amazzonia al Cerrado, passando per la Mata Atlântica e il Pantanal. Comprendiamo le particolarità di ogni regione e sviluppiamo metodologie specifiche per ogni contesto.',
+                'historia_texto3': 'Il nostro impegno è garantire che le proprietà rurali siano conformi alla legislazione ambientale, proteggendo sia l\'ambiente che gli interessi dei proprietari.',
+                'nossos_servicos': 'I Nostri Servizi',
+                'servicos_subtitle': 'Offriamo una gamma completa di servizi per la classificazione e la gestione dei rischi ambientali nelle proprietà rurali.',
+                'avaliacao_riscos': 'Valutazione dei Rischi Ambientali',
+                'avaliacao_riscos_desc': 'Conduciamo un\'analisi completa dei rischi ambientali presenti nella proprietà, identificando aree sensibili e potenziali impatti.',
+                'classificacao_propriedades': 'Classificazione delle Proprietà',
+                'classificacao_propriedades_desc': 'Classifichiamo la tua proprietà secondo i criteri stabiliti dalla legislazione ambientale, determinando il livello di rischio e le misure necessarie.',
+                'relatorios_tecnicos': 'Elaborazione di Rapporti Tecnici',
+                'relatorios_tecnicos_desc': 'Sviluppiamo rapporti tecnici dettagliati con tutte le informazioni necessarie per la regolarizzazione ambientale della tua proprietà.',
+                'planejamento_ambiental': 'Pianificazione della Gestione Ambientale',
+                'planejamento_ambiental_desc': 'Creiamo piani di gestione ambientale personalizzati per la tua proprietà, con azioni specifiche per mitigare i rischi identificati.',
+                'capacitacao_equipes': 'Formazione delle Squadre',
+                'capacitacao_equipes_desc': 'Offriamo formazione per le squadre di gestione ambientale, garantendo che la tua proprietà mantenga gli standard di qualità.',
+                'consultoria_especializada': 'Consulenza Specializzata',
+                'consultoria_especializada_desc': 'Forniamo consulenza specializzata per questioni ambientali, assistendo nel processo decisionale strategico per la tua proprietà.',
+                'nosso_processo': 'Il Nostro Processo',
+                'processo_subtitle': 'Scopri le fasi del nostro lavoro di classificazione dei rischi ambientali per le proprietà rurali.',
+                'diagnostico_inicial': 'Diagnosi Iniziale',
+                'diagnostico_inicial_desc': 'Effettuiamo una visita tecnica alla proprietà per comprenderne la struttura, le attività e le caratteristiche ambientali.',
+                'analise_dados': 'Analisi dei Dati',
+                'analise_dados_desc': 'Raccogliamo e analizziamo dati sulla proprietà, inclusa documentazione, storia e caratteristiche ambientali.',
+                'avaliacao_riscos_processo': 'Valutazione dei Rischi',
+                'avaliacao_riscos_processo_desc': 'Identifichiamo e valutiamo i rischi ambientali presenti nella proprietà, classificandoli per gravità e urgenza.',
+                'classificacao_processo': 'Classificazione',
+                'classificacao_processo_desc': 'Classifichiamo la proprietà secondo i criteri stabiliti dalla legislazione ambientale vigente.',
+                'relatorio_recomendacoes': 'Rapporto e Raccomandazioni',
+                'relatorio_recomendacoes_desc': 'Prepariamo un rapporto tecnico dettagliato con la classificazione e le raccomandazioni per la gestione dei rischi.',
+                'nossa_equipe': 'Responsabile Tecnico',
+                'equipe_subtitle': 'Conosci i professionisti specializzati che compongono la nostra squadra.',
+                'doutor_engenharia_florestal': 'Dottore in Ingegneria Forestale',
+                'especialista_gestao': 'Specialista in Gestione Ambientale',
+                'especialista_avaliacao': 'Specialista in Valutazione dei Rischi',
+                'especialista_legislacao': 'Specialista in Legislazione Ambientale',
+                'depoimentos': 'Cosa Dicono i Nostri Clienti',
+                'depoimentos_subtitle': 'Testimonianze di proprietari rurali che si sono fidati dei nostri servizi.',
+                'depoimento_texto': '"Leaf Corporation ha condotto una valutazione completa della nostra fattoria e ci ha aiutato a identificare rischi di cui non sapevamo nemmeno l\'esistenza. Grazie al loro lavoro, abbiamo potuto regolarizzare la nostra proprietà senza problemi."',
+                'depoimento_autor': 'João Paulo Mendes, Proprietario Rurale - Mato Grosso',
+                'entre_contato': 'Contattaci',
+                'contato_subtitle': 'Siamo pronti ad aiutarti con la classificazione dei rischi ambientali in Brasile',
+                'endereco': 'Indirizzo',
+                'telefone': '+55 (41) 99274-2173',
+                'email': 'Email',
+                'nome': 'Nome',
+                'propriedade': 'Proprietà',
+                'propriedade_placeholder': 'Nome e ubicazione della proprietà',
+                'mensagem': 'Messaggio',
+                'enviar_mensagem': 'Invia Messaggio',
+                'links_rapidos': 'Link Rapidi',
+                'servicos_footer': 'Servizi',
+                'redes_sociais': 'Social Media',
+                'copyright': '© 2023 Leaf Corporation - Tutti i diritti riservati'
+            },
+            'de': {
+                'site_title': 'Umweltrisiko-Klassifizierungsagentur für Ländliche Grundstücke in Brasilien',
+                'inicio': 'Startseite',
+                'sobre': 'Über Uns',
+                'servicos': 'Dienstleistungen',
+                'processo': 'Prozess',
+                'equipe': 'Team',
+                'contato': 'Kontakt',
+                'hero_subtitle': 'Experten für die Bewertung und Klassifizierung von Umweltrisiken ländlicher Grundstücke in ganz Brasilien.',
+                'solicite_avaliacao': 'Bewertung Anfordern',
+                'sobre_nos': 'Über Uns',
+                'sobre_subtitle': 'Lernen Sie Leaf Corporation kennen unsere Mission ist die Nachhaltigkeit Brasiliens.',
+                'nossa_historia': 'Unsere Geschichte',
+                'historia_texto1': 'Leaf Corporation entstand aus dem Bedürfnis nach einer spezialisierten Umweltrisikobewertung für ländliche Grundstücke in Brasilien. Mit einem hochqualifizierten Team bieten wir umfassende Lösungen für die Klassifizierung und Verwaltung von Umweltrisiken.',
+                'historia_texto2': 'Unsere Erfahrung umfasst verschiedene brasilianische Biome, von Amazonien bis zum Cerrado, einschließlich des Atlantischen Regenwaldes und des Pantanals. Wir verstehen die Besonderheiten jeder Region und entwickeln spezifische Methoden für jeden Kontext.',
+                'historia_texto3': 'Unser Engagement ist es, sicherzustellen, dass ländliche Grundstücke die Umweltgesetzgebung einhalten und dabei sowohl die Umwelt als auch die Interessen der Grundstückseigentümer schützen.',
+                'nossos_servicos': 'Unsere Dienstleistungen',
+                'servicos_subtitle': 'Wir bieten eine umfassende Palette von Dienstleistungen für die Klassifizierung und Verwaltung von Umweltrisiken in ländlichen Grundstücken.',
+                'avaliacao_riscos': 'Umweltrisikobewertung',
+                'avaliacao_riscos_desc': 'Wir führen eine umfassende Analyse der Umweltrisiken auf dem Grundstück durch, identifizieren sensible Bereiche und potenzielle Auswirkungen.',
+                'classificacao_propriedades': 'Grundstücksklassifizierung',
+                'classificacao_propriedades_desc': 'Wir klassifizieren Ihr Grundstück gemäß den Kriterien der Umweltgesetzgebung, bestimmen das Risikoniveau und die notwendigen Maßnahmen.',
+                'relatorios_tecnicos': 'Technische Berichte',
+                'relatorios_tecnicos_desc': 'Wir erstellen detaillierte technische Berichte mit allen notwendigen Informationen für die Umweltregulierung Ihres Grundstücks.',
+                'planejamento_ambiental': 'Umweltmanagementplanung',
+                'planejamento_ambiental_desc': 'Wir erstellen maßgeschneiderte Umweltmanagementpläne für Ihr Grundstück mit spezifischen Maßnahmen zur Minderung identifizierter Risiken.',
+                'capacitacao_equipes': 'Team-Schulung',
+                'capacitacao_equipes_desc': 'Wir bieten Schulungen für Umweltmanagementteams an und stellen sicher, dass Ihr Grundstück die Qualitätsstandards einhält.',
+                'consultoria_especializada': 'Spezialisierte Beratung',
+                'consultoria_especializada_desc': 'Wir bieten spezialisierte Beratung für Umweltfragen und unterstützen bei strategischen Entscheidungen für Ihr Grundstück.',
+                'nosso_processo': 'Unser Prozess',
+                'processo_subtitle': 'Lernen Sie die Schritte unserer Umweltrisikoklassifizierung für ländliche Grundstücke kennen.',
+                'diagnostico_inicial': 'Erste Diagnose',
+                'diagnostico_inicial_desc': 'Wir führen einen technischen Besuch des Grundstücks durch, um seine Struktur, Aktivitäten und Umweltmerkmale zu verstehen.',
+                'analise_dados': 'Datenanalyse',
+                'analise_dados_desc': 'Wir sammeln und analysieren Grundstücksdaten, einschließlich Dokumentation, Historie und Umweltmerkmale.',
+                'avaliacao_riscos_processo': 'Risikobewertung',
+                'avaliacao_riscos_processo_desc': 'Wir identifizieren und bewerten Umweltrisiken auf dem Grundstück und klassifizieren sie nach Schweregrad und Dringlichkeit.',
+                'classificacao_processo': 'Klassifizierung',
+                'classificacao_processo_desc': 'Wir klassifizieren das Grundstück gemäß den Kriterien der geltenden Umweltgesetzgebung.',
+                'relatorio_recomendacoes': 'Bericht und Empfehlungen',
+                'relatorio_recomendacoes_desc': 'Wir erstellen einen detaillierten technischen Bericht mit Klassifizierung und Empfehlungen für das Risikomanagement.',
+                'nossa_equipe': 'Technischer Verantwortlicher',
+                'equipe_subtitle': 'Lernen Sie unseren technischen Direktor kennen',
+                'doutor_engenharia_florestal': 'Philosophy Doctor',
+                'especialista_gestao': 'Umweltmanagementspezialist',
+                'especialista_avaliacao': 'Risikobewertungsspezialist',
+                'especialista_legislacao': 'Umweltrechtsspezialist',
+                'depoimentos': 'Was Unsere Kunden Sagen',
+                'depoimentos_subtitle': 'Testimonials von ländlichen Grundstückseigentümern, die unseren Dienstleistungen vertraut haben.',
+                'depoimento_texto': '"Leaf Corporation führte eine umfassende Bewertung unserer Farm durch und half uns, Risiken zu identifizieren, von deren Existenz wir nicht einmal wussten. Dank ihrer Arbeit konnten wir unser Grundstück ohne Probleme regulieren."',
+                'depoimento_autor': 'João Paulo Mendes, Ländlicher Grundstückseigentümer - Mato Grosso',
+                'entre_contato': 'Kontaktieren Sie Uns',
+                'contato_subtitle': 'Wir sind bereit, Ihnen bei der Klassifizierung von Umweltrisiken in ländlichen Grundstücken in Brasilien zu helfen',
+                'endereco': 'Adresse',
+                'telefone': '+55 (41) 99274-2173',
+                'email': 'E-Mail',
+                'nome': 'Name',
+                'propriedade': 'Grundstück',
+                'propriedade_placeholder': 'Name und Standort des Grundstücks',
+                'mensagem': 'Nachricht',
+                'enviar_mensagem': 'Nachricht Senden',
+                'links_rapidos': 'Schnelllinks',
+                'servicos_footer': 'Dienstleistungen',
+                'redes_sociais': 'Soziale Medien',
+                'copyright': '© 2023 Leaf Corporation - Alle Rechte vorbehalten'
+            },
+            'zh': {
+                'site_title': '巴西农村地产环境风险分类机构',
+                'inicio': '首页',
+                'sobre': '关于我们',
+                'servicos': '服务',
+                'processo': '流程',
+                'equipe': '团队',
+                'contato': '联系我们',
+                'hero_subtitle': '巴西各地农村地产环境风险评估和分类专家。',
+                'solicite_avaliacao': '申请评估',
+                'sobre_nos': '关于我们',
+                'sobre_subtitle': '了解Leaf Corporation我们的使命是巴西的可持续发展。',
+                'nossa_historia': '我们的历史',
+                'historia_texto1': 'Leaf Corporation源于对巴西农村财产进行专业环境风险评估的需求。凭借高度专业的团队，我们为环境风险分类和管理提供完整的解决方案。',
+                'historia_texto2': '我们的经验涵盖多个巴西生物群落，从亚马逊到塞拉多，包括大西洋森林和潘塔纳尔。我们了解每个地区的特殊性，并为每个具体情况制定特定的方法。',
+                'historia_texto3': '我们的承诺是确保农村财产符合环境法规，同时保护环境和财产所有者的利益。',
+                'nossos_servicos': '我们的服务',
+                'servicos_subtitle': '我们为农村财产的环境风险分类和管理提供全面的服务。',
+                'avaliacao_riscos': '环境风险评估',
+                'avaliacao_riscos_desc': '我们对财产中的环境风险进行全面分析，识别敏感区域和潜在影响。',
+                'classificacao_propriedades': '财产分类',
+                'classificacao_propriedades_desc': '我们根据环境法规标准对您的财产进行分类，确定风险水平和必要措施。',
+                'relatorios_tecnicos': '技术报告编制',
+                'relatorios_tecnicos_desc': '我们制定详细的技术报告，包含您的财产环境规范化所需的所有信息。',
+                'planejamento_ambiental': '环境管理规划',
+                'planejamento_ambiental_desc': '我们为您的财产创建定制环境管理计划，制定具体行动以减轻已识别的风险。',
+                'capacitacao_equipes': '团队培训',
+                'capacitacao_equipes_desc': '我们为环境管理团队提供培训，确保您的财产保持质量标准。',
+                'consultoria_especializada': '专业咨询',
+                'consultoria_especializada_desc': '我们提供环境问题专业咨询，协助您为财产做出战略决策。',
+                'nosso_processo': '我们的流程',
+                'processo_subtitle': '了解我们对农村财产进行环境风险分类的工作步骤。',
+                'diagnostico_inicial': '初步诊断',
+                'diagnostico_inicial_desc': '我们对财产进行技术访问，了解其结构、活动和环境特征。',
+                'analise_dados': '数据分析',
+                'analise_dados_desc': '我们收集和分析财产数据，包括文件、历史和环境特征。',
+                'avaliacao_riscos_processo': '风险评估',
+                'avaliacao_riscos_processo_desc': '我们识别和评估财产中的环境风险，按严重性和紧急性进行分类。',
+                'classificacao_processo': '分类',
+                'classificacao_processo_desc': '我们根据现行环境法规标准对财产进行分类。',
+                'relatorio_recomendacoes': '报告和建议',
+                'relatorio_recomendacoes_desc': '我们准备详细的技术报告，包含分类和风险管理建议。',
+                'nossa_equipe': '技术负责人',
+                'equipe_subtitle': '认识我们的技术总监',
+                'diretor_tecnico': '技术总监',
+                'especialista_gestao': '环境管理专家',
+                'especialista_avaliacao': '风险评估专家',
+                'especialista_legislacao': '环境法规专家',
+                'depoimentos': '客户评价',
+                'depoimentos_subtitle': '信任我们服务的农村财产所有者的见证。',
+                'depoimento_texto': '"Leaf Corporation对我们的农场进行了全面评估，帮助我们识别出我们甚至不知道存在的风险。多亏了他们的工作，我们能够顺利规范化我们的财产。"',
+                'depoimento_autor': 'João Paulo Mendes，农村财产所有者 - 马托格罗索',
+                'entre_contato': '联系我们',
+                'contato_subtitle': '我们随时准备帮助您进行巴西农村财产的环境风险分类。',
+                'endereco': '地址',
+                'telefone': '+55 (41) 99274-2173',
+                'email': '电子邮件',
+                'nome': '姓名',
+                'propriedade': '财产',
+                'propriedade_placeholder': '财产名称和位置',
+                'mensagem': '留言',
+                'enviar_mensagem': '发送留言',
+                'links_rapidos': '快速链接',
+                'servicos_footer': '服务',
+                'redes_sociais': '社交媒体',
+                'copyright': '© 2023 Leaf Corporation - 保留所有权利'
+            }
+        };
+
+        // Função para traduzir o site
+        function translateSite(lang) {
+            // Atualiza o idioma do documento
+            document.documentElement.lang = lang;
+            
+            // Atualiza o título da página
+            document.title = translations[lang]['site_title'];
+            
+            // Atualiza o texto do botão de idioma
+            const langBtn = document.querySelector('.language-btn');
+            let flagIcon, langText;
+            
+            switch(lang) {
+                case 'pt-BR':
+                    flagIcon = '🇧🇷';
+                    langText = 'PT-BR';
+                    break;
+                case 'en':
+                    flagIcon = '🇺🇸';
+                    langText = 'EN';
+                    break;
+                case 'es':
+                    flagIcon = '🇪🇸';
+                    langText = 'ES';
+                    break;
+                case 'fr':
+                    flagIcon = '🇫🇷';
+                    langText = 'FR';
+                    break;
+                case 'it':
+                    flagIcon = '🇮🇹';
+                    langText = 'IT';
+                    break;
+                case 'de':
+                    flagIcon = '🇩🇪';
+                    langText = 'DE';
+                    break;
+                case 'zh':
+                    flagIcon = '🇨🇳';
+                    langText = 'ZH';
+                    break;
+                default:
+                    flagIcon = '🇧🇷';
+                    langText = 'PT-BR';
+            }
+            
+            langBtn.innerHTML = `<span class="flag-icon">${flagIcon}</span> <span>${langText}</span>`;
+            
+            // Atualiza todos os elementos com data-translate
+            const elements = document.querySelectorAll('[data-translate]');
+            elements.forEach(element => {
+                const key = element.getAttribute('data-translate');
+                if (translations[lang] && translations[lang][key]) {
+                    if (element.tagName === 'INPUT' && element.getAttribute('placeholder')) {
+                        element.placeholder = translations[lang][key];
+                    } else {
+                        element.textContent = translations[lang][key];
+                    }
+                }
+            });
+        }
+
+        // Adiciona event listeners para os links de idioma
+        document.addEventListener('DOMContentLoaded', () => {
+            const langLinks = document.querySelectorAll('.language-dropdown a');
+            
+            langLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const lang = link.getAttribute('href').replace('#', '');
+                    translateSite(lang);
+                    
+                    // Atualiza a classe active
+                    langLinks.forEach(l => l.classList.remove('active'));
+                    link.classList.add('active');
+                    
+                    // Fecha o dropdown
+                    langDropdown.classList.remove('active');
+                });
+            });
+
+            // Inicializa o site com o idioma padrão
+            translateSite('pt-BR');
+        });
+
+        // Adiciona efeito de fade-in nas seções
+        function handleScroll() {
+            const sections = document.querySelectorAll('section');
+            sections.forEach(section => {
+                const sectionTop = section.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                
+                if (sectionTop < windowHeight * 0.75) {
+                    section.classList.add('fade-in', 'visible');
+                }
+            });
+        }
+
+        // Adiciona a classe fade-in em todas as seções
+        document.addEventListener('DOMContentLoaded', () => {
+            const sections = document.querySelectorAll('section');
+            sections.forEach(section => {
+                section.classList.add('fade-in');
+            });
+            
+            // Executa o handleScroll inicialmente
+            handleScroll();
+            
+            // Adiciona o evento de scroll
+            window.addEventListener('scroll', handleScroll);
+        });
+    </script>
+</body>
+</html> 
